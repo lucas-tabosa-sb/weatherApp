@@ -1,6 +1,9 @@
 const queryInput = document.getElementById('query-input')
 const queryBtn = document.getElementById('query-button')
 
+const card = document.getElementById('info-card')
+const cardTitle = document.getElementById('card-title')
+
 const apiKey = 'afc999c5e2d7407ab1905841220907'
 
 
@@ -11,5 +14,12 @@ queryBtn.addEventListener('click', async function getCurrentWeather(){
     const response = await fetch(apiUrl)
     const currentWeather = await response.json()
 
-    
+    console.log(Object.entries(currentWeather))
+
+    const cityName = `${currentWeather.location.name}`
+    cardTitle.append(cityName)
+
 })
+
+
+//    const letters = /^[A-Za-z]+$/ -> regex for validation
