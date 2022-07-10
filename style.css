@@ -1,111 +1,199 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,600;0,800;1,100;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,500;1,200&family=Oswald:wght@300;500&family=Raleway:ital,wght@0,300;0,400;0,600;0,800;1,100;1,400;1,700&display=swap');
+
+/* font-family: 'Montserrat Alternates', sans-serif;
+font-family: 'Oswald', sans-serif;
+font-family: 'Raleway', sans-serif; */
+
 
 body {
     font-family: 'Raleway', sans-serif;
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
     color: white;
-    text-shadow: 1px 1px 1px rgba(0,0,0,1);
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#311847), to(#3EB9E6));
-    background-image: -webkit-linear-gradient(top, #311847, #3EB9E6);
-    background-image: -moz-linear-gradient(top, #311847, #3EB9E6);
-    background-image: linear-gradient(to bottom, #311847, #3EB9E6);
+
+    text-shadow: 2px 2px 1px rgba(0,0,0,1);
 }
 
 .app {
     height: 100vh;
     width: 100%;
+
     display: flex;
-    justify-content: center;
+    text-align: center;
+    justify-content: space-evenly;
     align-items: center;
     flex-direction: column;
+
+    background: url('/img/earth-bg.webp');
+    background-size: cover;
 }
 
-.container{
+.weather-container{
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
-    background: #ffffff7e;
+    background: rgba(255, 254, 254, 0.034);
     border-radius: 1.6rem;
+    /* border: 5px solid purple; */
     padding: 1rem;
+    backdrop-filter: blur(.8rem);
+    box-shadow: .4rem .4rem 1rem 0 rgba(255, 255, 255, 0.199)
 }
 
 
-.title {
+.app-title {
     font-weight: 700;
 }
 
 .search-location {
-    width: 100%;
     display: flex;
     justify-content: space-evenly;
-    margin: 1rem 0;
 }
 
-.search-input {
+.search-location input {
     border-radius: 2rem;
-    font-size: 1.5rem;
-    border: none;
-    outline: none;
-    -webkit-box-shadow: 5px 6px 7px -2px rgba(0,0,0,0.43); 
-    box-shadow: 5px 6px 7px -2px rgba(0,0,0,0.43);
-    text-align: center;
 }
-.search-input:focus::placeholder{
+
+.search-location input:focus::placeholder{
     color: transparent;
 }
 
-.search-button {
-    font-size: 1.5rem;
+button,
+input {
+    border: none;
+    outline: none;
+    -webkit-box-shadow: 5px 6px 7px -2px rgba(0,0,0,0.43);
+    box-shadow: 5px 6px 7px -2px rgba(0,0,0,0.43);
+    text-align: center;
+    margin: 0 .2rem;
+}
+
+.search-location button {
     border-radius: 1.6rem;
     padding: 1rem;
     background: #ccc;
-    border: none;
-    outline: none;
-    -webkit-box-shadow: 5px 6px 7px -2px rgba(0,0,0,0.43); 
-    box-shadow: 5px 6px 7px -2px rgba(0,0,0,0.43);
 }
 
-.search-button:active{
+.search-location button:active{
     transform: translate(-1px, 1px);
 }
 
-.back-card {
-    border-radius: 2rem 2rem 0 0;
-    text-align: center;
-}
-
-.card-top img {
-    border-radius: 1.6rem;
-    
-}
-
 .city-name {
-    font-size: 2.5rem;
-    font-weight: bold;
+    font-family: Oswald, sans-serif;
     font-style: italic;
-    position: absolute;
-    color: #fff;
-    width: 100%;
-    left: 50%;
-    transform: translateX(-50%);
+    font-size: 2rem;
 }
 
-.card-mid {
-    font-size: 1.4rem;
+.main-temp {
     display: flex;
     justify-content: space-evenly;
+    align-items: center;
 }
 
-.temp {
-    font-size: 4rem;
-    margin: 2rem 0;
+.current-temperature {
+    font-family: 'Oswald', sans-serif;
+    font-size: 3rem;
+}
+
+.min-max{
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.4rem;
+    margin-top: 1rem;
+    padding: 1rem;
+    font-family: 'Oswald', sans-serif;
 }
 
 .card-bottom {
     display: flex;
     justify-content: space-evenly;
-    margin: 1rem 0;
-    font-size: 1.4rem;
+}
+
+.card-bottom span {
+    font-style: italic;
+    text-shadow: .8px .8px 1px rgba(0,0,0,1);
+
+}
+
+.card-bottom p {
+    font-size: 1.2rem;
+    margin: .5rem;
+    font-family: 'Oswald', sans-serif;
+
+}
+
+.card-flip {
+    display: flex;
+    justify-content: space-evenly;
+    width: 50%;
+    font-size: 1.1rem;
+}
+
+.hidden {
+    display: none;
+}
+
+/*TO-DO -> DYNAMIC BG CHANGE
+.sunny {
+    background: url('/img/clear-sky-lg.gif');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+.rain {
+    background: url('/img/rain2.gif');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.storm {
+    background: url('/img/storm.gif');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.snowing {
+    background: url('/img/snow.gif');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.mist {
+    background: url('/img/mist.gif');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+@media (min-width: 920px){
+    .sunny {
+        background: url('/img/clear-sky-lg.gif');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+    }
+    .rain {
+        background: url('/img/rain2.gif');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+    }
+    .storm {
+        background: url('/img/storm.gif');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+    }
+    .snowing {
+        background: url('/img/snow.gif');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+    }
+    .mist {
+        background: url('/img/mist.gif');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+    }
+}
+*/
+
+@media (min-width: 900px){
+    .app {
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+    }
+
+    
 }
