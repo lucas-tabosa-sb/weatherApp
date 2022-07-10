@@ -1,0 +1,245 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,500;1,200&family=Oswald:wght@300;500&family=Raleway:ital,wght@0,300;0,400;0,600;0,800;1,100;1,400;1,700&display=swap');
+
+/* font-family: 'Montserrat Alternates', sans-serif;
+font-family: 'Oswald', sans-serif;
+font-family: 'Raleway', sans-serif; */
+
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: Oswald, sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: white;
+
+    text-shadow: 2px 2px 1px rgba(0,0,0,1);
+}
+
+.app {
+    height: 100vh;
+    width: 100%;
+
+    display: flex;
+    text-align: center;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+
+    background: url('/img/earth-bg.webp');
+    background-size: cover;
+}
+
+.weather-container{
+    display: flex;
+    flex-direction: column;
+    background: rgba(255, 254, 254, 0.034);
+    border-radius: 2.6rem;
+    padding: 2rem;
+    backdrop-filter: blur(.8rem);
+    box-shadow: .4rem .4rem 1rem 0 rgba(255, 255, 255, 0.199)
+}
+
+
+.app-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+}
+
+.search-location {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.search-location input {
+    border-radius: 2rem;
+}
+
+.search-location input:focus::placeholder{
+    color: transparent;
+}
+
+button,
+input {
+    border: none;
+    outline: none;
+    -webkit-box-shadow: 5px 6px 7px -2px rgba(0,0,0,0.43);
+    box-shadow: 5px 6px 7px -2px rgba(0,0,0,0.43);
+    text-align: center;
+    margin: 0 .2rem;
+    font-weight: bold;
+}
+
+.search-location button {
+    background: rgba(158, 224, 255, 0.856) !important;
+}
+
+.search-location button:hover {
+    background: rgba(6, 116, 167, 0.856) !important;
+    color: #fff;
+    font-weight: bold;
+}
+
+.search-location button {
+    border-radius: 1.6rem;
+    padding: 1rem;
+    background: #ccc;
+}
+
+.search-location button:active{
+    transform: translate(-1px, 1px);
+}
+
+.city-name {
+    /* font-family: Oswald, sans-serif; */
+    font-style: italic;
+    font-size: 3rem;
+}
+
+.main-temp {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.current-temperature {
+    font-size: 6rem;
+}
+
+.min-max{
+    display: flex;
+    justify-content: space-between;
+    font-size: 2.5rem;
+    margin-top: 1rem;
+    padding: 1rem;
+}
+
+.card-bottom {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 1rem;
+}
+
+.card-bottom span {
+    text-shadow: 1px 1px 1px rgba(0,0,0,1);
+    font-size: 1.8rem;
+
+}
+
+.card-bottom p {
+    font-size: 2.2rem;
+    margin: .6rem;
+
+}
+
+.card-flip {
+    display: flex;
+    justify-content: space-evenly;
+    width: 50%;
+    font-size: 3.1rem;
+}
+
+.hidden {
+    display: none;
+}
+
+/*TO-DO -> DYNAMIC BG CHANGE
+.sunny {
+    background: url('/img/clear-sky-lg.gif');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+.rain {
+    background: url('/img/rain2.gif');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.storm {
+    background: url('/img/storm.gif');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.snowing {
+    background: url('/img/snow.gif');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.mist {
+    background: url('/img/mist.gif');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+@media (min-width: 920px){
+    .sunny {
+        background: url('/img/clear-sky-lg.gif');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+    }
+    .rain {
+        background: url('/img/rain2.gif');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+    }
+    .storm {
+        background: url('/img/storm.gif');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+    }
+    .snowing {
+        background: url('/img/snow.gif');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+    }
+    .mist {
+        background: url('/img/mist.gif');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+    }
+}
+*/
+
+
+/* @media (min-width: 500px){
+    .weather-container{
+        width: 35rem;
+        height: 45rem;
+    }
+} */
+
+
+@media (min-width: 540px){
+
+    html {
+        font-size: 100%;
+    }
+
+    .app {
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+    }
+
+    .weather-container{
+        width: 25rem;
+        height: 40rem;
+    }
+
+    .search-location input {
+        font-size: 1.5rem;
+        width: 100%;
+    }
+
+    .search-location button {
+        font-size: 1.2rem;
+    }
+
+    .card-bottom {
+        margin-top: 4rem;
+    }
+
+}
+
+

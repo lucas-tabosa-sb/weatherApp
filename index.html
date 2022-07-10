@@ -1,25 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/fontawesome.min.css"
+        integrity="sha384-zIaWifL2YFF1qaDiAo0JFgsmasocJ/rqu7LKYH8CoBEXqGbb9eO+Xi3s6fQhgFWM" crossorigin="anonymous">
     <title>WeatherApp</title>
-    <link rel="stylesheet" href="./css/style.css">
-    <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
 </head>
-<body>
-    
-    <div class="container">
 
-        <div class="search-container">
-            <input type="text" id="query-input" placeholder="Search your city name"/>
-            <button id="query-button">search</button>
-        </div>
-        
+<body>
+    <div class="app">
+
+        <h1 class="app-title">WeatherApp</h1>
+
+        <section class="weather-container">
+            <div class="search-location">
+                <input type="text" placeholder="What city?" class="search-input" id="search-input" value="">
+                <button class="search-button" id="search-button"> Search </button>
+            </div>
+
+            <div class="weather-card">
+                <div class="card-top">
+                    <h2 class="city-name"></h2>
+                </div>
+
+                <div class="card-mid">
+                    <div class="main-temp">
+                        <span class="current-temperature"></span>
+                        <img src="" alt="" class="temp-icon"/>
+                    </div>
+                    <div class="min-max">
+                        <span class="min-temperature">12</span>
+                        <span class="v-divider">|</span>
+                        <span class="max-temperature">12</span>
+                    </div>
+                </div>
+
+                <div class="card-bottom">
+                    <div class="feels-like">
+                        <span>Feels Like:</span>
+                        <p class="temp-feeling">12</p>
+                    </div>
+                    <div class="weather-condition">
+                        <span>Humidity:</span>
+                        <p class="humidity">12</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- <div class="card-flip">
+            <span class="select-current">Current</span>
+            <span class="v-divider">|</span>
+            <span class="select-forecast">Forecast</a>
+        </div> -->
+
     </div>
-    <script src="./js/skycons.js"></script>
-    <script src="./js/jquery-3.2.1.min.js"></script>
-    <script src="./js/main.js"></script>
+
+
+    <script src="main.js"></script>
 </body>
+
 </html>
