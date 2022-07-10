@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,600;0,800;1,100;1,400;1,700&display=swap');
+
+body {
+    font-family: 'Raleway', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: white;
+    text-shadow: 1px 1px 1px rgba(0,0,0,1);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#311847), to(#3EB9E6));
+    background-image: -webkit-linear-gradient(top, #311847, #3EB9E6);
+    background-image: -moz-linear-gradient(top, #311847, #3EB9E6);
+    background-image: linear-gradient(to bottom, #311847, #3EB9E6);
+}
+
+.app {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #ffffff7e;
+    border-radius: 1.6rem;
+    padding: 1rem;
+}
+
+
+.title {
+    font-weight: 700;
+}
+
+.search-location {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 1rem 0;
+}
+
+.search-input {
+    border-radius: 2rem;
+    font-size: 1.5rem;
+    border: none;
+    outline: none;
+    -webkit-box-shadow: 5px 6px 7px -2px rgba(0,0,0,0.43); 
+    box-shadow: 5px 6px 7px -2px rgba(0,0,0,0.43);
+    text-align: center;
+}
+.search-input:focus::placeholder{
+    color: transparent;
+}
+
+.search-button {
+    font-size: 1.5rem;
+    border-radius: 1.6rem;
+    padding: 1rem;
+    background: #ccc;
+    border: none;
+    outline: none;
+    -webkit-box-shadow: 5px 6px 7px -2px rgba(0,0,0,0.43); 
+    box-shadow: 5px 6px 7px -2px rgba(0,0,0,0.43);
+}
+
+.search-button:active{
+    transform: translate(-1px, 1px);
+}
+
+.back-card {
+    border-radius: 2rem 2rem 0 0;
+    text-align: center;
+}
+
+.card-top img {
+    border-radius: 1.6rem;
+    
+}
+
+.city-name {
+    font-size: 2.5rem;
+    font-weight: bold;
+    font-style: italic;
+    position: absolute;
+    color: #fff;
+    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.card-mid {
+    font-size: 1.4rem;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.temp {
+    font-size: 4rem;
+    margin: 2rem 0;
+}
+
+.card-bottom {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 1rem 0;
+    font-size: 1.4rem;
+}
