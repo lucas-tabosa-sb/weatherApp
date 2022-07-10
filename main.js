@@ -1,48 +1,57 @@
-'use strict'
+"use strict";
 // search elements and CTA
-const app = document.querySelector('.app')
-const searchInput = document.getElementById('search-input')
-const searchBtn = document.getElementById('search-button')
+const app = document.querySelector(".app");
+const searchInput = document.getElementById("search-input");
+const searchBtn = document.getElementById("search-button");
 
 // text elements
-const cityResult = document.querySelector('.city-name')
-const tempIcon = document.querySelector('.temp-icon')
-const currentTemp = document.querySelector('.current-temperature')
-const minTemp = document.querySelector('.min-temperature')
-const maxTemp = document.querySelector('.max-temperature')
-const tempFeeling = document.querySelector('.temp-feeling')
-const humidity = document.querySelector('.humidity')
+const cityResult = document.querySelector(".city-name");
+const tempIcon = document.querySelector(".temp-icon");
+const currentTemp = document.querySelector(".current-temperature");
+const minTemp = document.querySelector(".min-temperature");
+const maxTemp = document.querySelector(".max-temperature");
+const tempFeeling = document.querySelector(".temp-feeling");
+const humidity = document.querySelector(".humidity");
 
 // card + select card
-const currentCard = document.querySelector('.weather-container')
-const forecastCard = document.querySelector('.forecast-container')
-const selectForecast = document.querySelector('.select-forecast')
-const selectCurrent = document.querySelector('.select-current')
+const currentCard = document.querySelector(".weather-container");
+const forecastCard = document.querySelector(".forecast-container");
+const selectForecast = document.querySelector(".select-forecast");
+const selectCurrent = document.querySelector(".select-current");
 
+const apiKey = "bf06a835de048cf99b1e976427cd94f2";
 
-const apiKey = "bf06a835de048cf99b1e976427cd94f2"
+const getCurrent = async function getWeather() {
+  const cityOption = `${searchInput.value ? searchInput.value : "fortaleza"}`;
 
-const getCurrent = async function getWeather(){
+  const apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityOption}&appid=${apiKey}&units=metric`;
 
-    const cityOption = `${searchInput.value ? searchInput.value : 'fortaleza' }`
+  const response = await fetch(apiURL);
 
-    const apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityOption}&appid=${apiKey}&units=metric`
+  if (response.status !== 200) {
+    cityResult.textContent = "No results Found";
+    currentTemp.textContent = "- ℃";
+    minTemp.textContent = "- ℃";
+    maxTemp.textContent = "- ℃";
+    tempFeeling.textContent = "- ℃";
+    humidity.textContent = "- %";
+    tempIcon.src = "";
+  }
 
-    const response = await fetch(apiURL)
-    const current = await response.json()
+  const current = await response.json();
 
-    const iconURL = `http://openweathermap.org/img/wn/${current.weather[0].icon}@2x.png`
+  const iconURL = `http://openweathermap.org/img/wn/${current.weather[0].icon}@2x.png`;
 
-    cityResult.textContent = `${current.name} - ${current.sys.country}`
-    currentTemp.textContent = `${Math.floor(current.main.temp)}℃`
-    minTemp.textContent = `Min: ${Math.floor(current.main.temp_min)}℃`
-    maxTemp.textContent = `Max: ${Math.floor(current.main.temp_max)}℃`
-    tempFeeling.textContent = `${Math.floor(current.main.feels_like)}℃`
-    humidity.textContent = `${Math.floor(current.main.humidity)}%`
-    tempIcon.src = iconURL
+  cityResult.textContent = `${current.name}`; //${current.sys.country}
+  currentTemp.textContent = `${Math.floor(current.main.temp)}℃`;
+  minTemp.textContent = `Min: ${Math.floor(current.main.temp_min)}℃`;
+  maxTemp.textContent = `Max: ${Math.floor(current.main.temp_max)}℃`;
+  tempFeeling.textContent = `${Math.floor(current.main.feels_like)}℃`;
+  humidity.textContent = `${Math.floor(current.main.humidity)}%`;
+  tempIcon.src = iconURL;
 
-    // TO-DO -> work on dynamic bg change
-    /*
+  // TODO -> work on dynamic bg change
+  /*
     const weatherId = current.weather[0].id
 
     if (weatherId >= 200 && weatherId <=232){
@@ -62,21 +71,30 @@ const getCurrent = async function getWeather(){
         app.classList.add('app' ,'sunny')
     }
     */
+};
 
-    
+// TODO -> FINISH CURRENT AND FORECAST CARDS
+// selectForecast.addEventListener('click', function(){
+//     currentCard.classList.add('hidden')
+// })
 
-}
+// selectCurrent.addEventListener('click', function(){
+//     currentCard.classList.remove('hidden')
+// })
 
-
-selectForecast.addEventListener('click', function(){
-    currentCard.classList.add('hidden')
-})
-
-selectCurrent.addEventListener('click', function(){
-    currentCard.classList.remove('hidden')
-})
-
+// when page loads
 
 
-getCurrent()
-searchBtn.addEventListener('click', getCurrent)
+// when page loads
+getCurrent();
+
+// when search button is clicked
+searchBtn.addEventListener("click", getCurrent);
+
+// enter keyboard ENTER is hit
+searchInput.addEventListener("keyup", function (e) {
+  if (e.keyCode === 13) {
+    e.preventDefault();
+    searchBtn.click();
+  }
+});
