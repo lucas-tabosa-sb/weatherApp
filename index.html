@@ -17,6 +17,7 @@
 
         <h1 class="app-title">WeatherApp</h1>
 
+        <!-- current weather container -->
         <section class="weather-container">
             <div class="search-location">
                 <input type="text" placeholder="What city?" class="search-input" id="search-input" value="">
@@ -53,12 +54,52 @@
 
             </div>
         </section>
+        <!-- current weather end -->
 
-        <!-- <div class="card-flip">
+        <!--  forecast weather container-->
+        <section class="forecast-container hidden">
+            <div class="search-location">
+                <input type="text" placeholder="What city?" class="search-input" id="search-input" value="">
+                <button class="search-button" id="search-button"> Search </button>
+            </div>
+
+            <div class="weather-card">
+                <div class="card-top">
+                    <h2 class="city-name"></h2>
+                </div>
+
+                <div class="card-mid">
+                    <div class="main-temp">
+                        <span class="current-temperature"></span>
+                        <img src="" alt="" class="temp-icon"/>
+                    </div>
+                    <div class="min-max">
+                        <span class="min-temperature">12</span>
+                        <span class="v-divider">|</span>
+                        <span class="max-temperature">12</span>
+                    </div>
+                </div>
+
+                <div class="card-bottom">
+                    <div class="feels-like">
+                        <span>Feels Like:</span>
+                        <p class="temp-feeling">12</p>
+                    </div>
+                    <div class="weather-condition">
+                        <span>Humidity:</span>
+                        <p class="humidity">12</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!-- forecast end -->
+
+        <div class="card-flip">
             <span class="select-current">Current</span>
             <span class="v-divider">|</span>
             <span class="select-forecast">Forecast</a>
-        </div> -->
+        </div>
 
     </div>
 

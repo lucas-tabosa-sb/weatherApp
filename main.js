@@ -74,15 +74,16 @@ const getCurrent = async function getWeather() {
 };
 
 // TODO -> FINISH CURRENT AND FORECAST CARDS
-// selectForecast.addEventListener('click', function(){
-//     currentCard.classList.add('hidden')
-// })
+selectForecast.addEventListener('click', function(){
+    currentCard.classList.add('hidden')
+    forecastCard.classList.remove('hidden')
+})
 
-// selectCurrent.addEventListener('click', function(){
-//     currentCard.classList.remove('hidden')
-// })
+selectCurrent.addEventListener('click', function(){
+    currentCard.classList.remove('hidden')
+    forecastCard.classList.add('hidden')
+})
 
-// when page loads
 
 
 // when page loads

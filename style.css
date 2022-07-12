@@ -33,7 +33,8 @@ body {
     background-size: cover;
 }
 
-.weather-container{
+.weather-container,
+.forecast-container {
     display: flex;
     flex-direction: column;
     background: rgba(255, 254, 254, 0.034);
@@ -139,14 +140,15 @@ input {
     display: flex;
     justify-content: space-evenly;
     width: 50%;
-    font-size: 3.1rem;
+    font-size: 2.1rem;
+    cursor: pointer;
 }
 
 .hidden {
     display: none;
 }
 
-/*TO-DO -> DYNAMIC BG CHANGE
+/*TODO -> DYNAMIC BG CHANGE
 .sunny {
     background: url('/img/clear-sky-lg.gif');
     background-size: 100% 100%;
@@ -238,6 +240,12 @@ input {
 
     .card-bottom {
         margin-top: 4rem;
+    }
+
+    .card-flip {
+        width: 25%;
+        margin-top: 1rem;
+        cursor: pointer;
     }
 
 }
