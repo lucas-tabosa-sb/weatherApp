@@ -23,7 +23,7 @@ const apiKey = "bf06a835de048cf99b1e976427cd94f2";
 
 const getCurrent = async function getWeather() {
   const cityOption = `${searchInput.value ? searchInput.value : "fortaleza"}`;
-
+  
   const apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityOption}&appid=${apiKey}&units=metric`;
 
   const response = await fetch(apiURL);
@@ -73,16 +73,55 @@ const getCurrent = async function getWeather() {
     */
 };
 
+const getForecast = async function getForecastReq(){
+  const cityOption = `${searchInput.value ? searchInput.value : "fortaleza"}`;
+
+  const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityOption}&appid=${apiKey}`
+  const response = await fetch(forecastUrl)
+  const forecast = await response.json()
+
+
+  // whole list of 40 items
+  let forecastList = forecast.list
+  // maps the 40 items -> returns an array of 40 items
+  let forecastDates = forecastList.map(items => {
+    
+    let s = items.dt
+    let dateStr = new Date(0)
+    dateStr.setUTCSeconds(s)
+    
+    return String(dateStr).split(' ')[0] // takes day of the week ou of full date string
+  })
+
+ 
+  console.log(forecastDates[4]) // first day of forecast
+  console.log(forecastDates[12]) // 2-day forecast
+  console.log(forecastDates[20]) // 3-day forecast
+  console.log(forecastDates[28]) // 4-day forecast
+  console.log(forecastDates[36]) // 5-day forecast
+
+  // let seconds = forecast.list[0].dt
+  // let date = new Date(0)
+  // date.setUTCSeconds(seconds)
+
+  // console.log(date, seconds)
+}
+
+
+// event handlers
+
 // TODO -> FINISH CURRENT AND FORECAST CARDS
-// selectForecast.addEventListener('click', function(){
-//     currentCard.classList.add('hidden')
-// })
+selectForecast.addEventListener('click', function(){
+    currentCard.classList.add('hidden')
+    forecastCard.classList.remove('hidden')
+})
 
-// selectCurrent.addEventListener('click', function(){
-//     currentCard.classList.remove('hidden')
-// })
+selectCurrent.addEventListener('click', function(){
+    currentCard.classList.remove('hidden')
+    forecastCard.classList.add('hidden')
+})
 
-// when page loads
+selectForecast.addEventListener('click', getForecast)
 
 
 // when page loads
