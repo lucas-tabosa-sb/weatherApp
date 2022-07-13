@@ -13,7 +13,13 @@ const maxTemp = document.querySelector(".max-temperature");
 const tempFeeling = document.querySelector(".temp-feeling");
 const humidity = document.querySelector(".humidity");
 
-// card + select card
+// forecast elements
+const forecastCity = document.querySelector('.forecast-city-name')
+const forecastCurrentTemp = document.querySelector('.forecast-current-temperature')
+const forecastTempIcon = document.querySelector('.forecast-temp-icon')
+const forecastCardMid = document.querySelector('.forecast-card-mid')
+
+// card + select card / hide the other
 const currentCard = document.querySelector(".weather-container");
 const forecastCard = document.querySelector(".forecast-container");
 const selectForecast = document.querySelector(".select-forecast");
@@ -76,35 +82,86 @@ const getCurrent = async function getWeather() {
 const getForecast = async function getForecastReq(){
   const cityOption = `${searchInput.value ? searchInput.value : "fortaleza"}`;
 
-  const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityOption}&appid=${apiKey}`
+  const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityOption}&appid=${apiKey}&units=metric`
   const response = await fetch(forecastUrl)
   const forecast = await response.json()
 
 
   // whole list of 40 items
   let forecastList = forecast.list
-  // maps the 40 items -> returns an array of 40 items
+  
+  // maps the 40 items -> returns an array of 40 full dates
   let forecastDates = forecastList.map(items => {
-    
     let s = items.dt
     let dateStr = new Date(0)
     dateStr.setUTCSeconds(s)
-    
-    return String(dateStr).split(' ')[0] // takes day of the week ou of full date string
+
+    return String(dateStr).split(' ')[0] // takes day of the week ou of full date string (each array)
   })
 
- 
-  console.log(forecastDates[4]) // first day of forecast
-  console.log(forecastDates[12]) // 2-day forecast
-  console.log(forecastDates[20]) // 3-day forecast
-  console.log(forecastDates[28]) // 4-day forecast
-  console.log(forecastDates[36]) // 5-day forecast
+  // takes the 40 items and returns the icon from the weather attribute
+  let forecastIcons = forecastList.map(icons => {
+    return icons.weather[0].icon
+  })
 
-  // let seconds = forecast.list[0].dt
-  // let date = new Date(0)
-  // date.setUTCSeconds(seconds)
+  // temperatures each day of the week
+  let forecastTemp = forecastList.map(items =>{
+    return Math.floor(items.main.temp)
+  })
 
-  // console.log(date, seconds)
+  // logging the desired days of week 5 days from the current date + respective weather icons
+  //console.log(forecastDates[4]) -> first day of forecast
+  //console.log(forecastIcons[4]) -> 1 day icon
+  // console.log(forecastTemp[4])
+
+  // gets 5 days, weather icons, temperatures, from the current date, at noon
+  const daysOfWeek = [forecastDates[4], forecastDates[12], forecastDates[20], forecastDates[28], forecastDates[36]]
+  const tempsOfWeek = [forecastTemp[4], forecastTemp[12], forecastTemp[20], forecastTemp[28], forecastTemp[36]]
+  const weekDaysIcons = [forecastIcons[4], forecastIcons[12], forecastIcons[20], forecastIcons[28], forecastIcons[36]]
+
+  const weekdaysMarkup = `
+  <div class="weekday-container">
+    <p class="weekday">${forecastDates[4]}</p>
+    <span class="date">dummy</span>
+    <span class="forecast-weather">23</span>
+    <img src="http://openweathermap.org/img/wn/${forecastIcons[0]}@2x.png" alt="" class="forecast-temp-icon" />
+  </div>`
+
+  forecastCardMid.innerHTML += weekdaysMarkup
+
+  console.log(daysOfWeek)
+  console.log(weekDaysIcons)
+  console.log(tempsOfWeek)
+
+
+
+  // populating HTML:
+  forecastCity.textContent = `${cityOption}, `
+  forecastCurrentTemp.textContent = currentTemp.textContent
+  forecastTempIcon.src = tempIcon.src
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

@@ -18,7 +18,7 @@
         <h1 class="app-title">WeatherApp</h1>
 
         <!-- current weather container -->
-        <section class="weather-container">
+        <section class="weather-container hidden">
             <div class="search-location">
                 <input type="text" placeholder="What city?" class="search-input" id="search-input" value="">
                 <button class="search-button" id="search-button"> Search </button>
@@ -32,7 +32,7 @@
                 <div class="card-mid">
                     <div class="main-temp">
                         <span class="current-temperature"></span>
-                        <img src="" alt="" class="temp-icon"/>
+                        <img src="" alt="" class="temp-icon" />
                     </div>
                     <div class="min-max">
                         <span class="min-temperature">12</span>
@@ -57,41 +57,24 @@
         <!-- current weather end -->
 
         <!--  forecast weather container-->
-        <section class="forecast-container hidden">
+        <section class="forecast-container">
             <div class="search-location">
                 <input type="text" placeholder="What city?" class="search-input" id="search-input" value="">
                 <button class="search-button" id="search-button"> Search </button>
             </div>
 
-            <div class="weather-card">
-                <div class="card-top">
-                    <h2 class="city-name"></h2>
+            <div class="forecast-card">
+                <div class="forecast-card-top">
+                    <h2 class="forecast-city-name"></h2>
+                    <span class="forecast-current-temperature"></span>
+                    <img src="" alt="" class="forecast-temp-icon" />
                 </div>
-
-                <div class="card-mid">
-                    <div class="main-temp">
-                        <span class="current-temperature"></span>
-                        <img src="" alt="" class="temp-icon"/>
-                    </div>
-                    <div class="min-max">
-                        <span class="min-temperature">12</span>
-                        <span class="v-divider">|</span>
-                        <span class="max-temperature">12</span>
-                    </div>
+                
+                <div class="forecast-card-mid">
+                    <!-- inserted via JS -->
                 </div>
-
-                <div class="card-bottom">
-                    <div class="feels-like">
-                        <span>Feels Like:</span>
-                        <p class="temp-feeling">12</p>
-                    </div>
-                    <div class="weather-condition">
-                        <span>Humidity:</span>
-                        <p class="humidity">12</p>
-                    </div>
-                </div>
-
             </div>
+
         </section>
         <!-- forecast end -->
 
