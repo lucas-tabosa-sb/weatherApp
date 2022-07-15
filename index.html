@@ -17,6 +17,7 @@
 
         <h1 class="app-title">WeatherApp</h1>
 
+        <!-- current weather container -->
         <section class="weather-container">
             <div class="search-location">
                 <input type="text" placeholder="What city?" class="search-input" id="search-input" value="">
@@ -31,7 +32,7 @@
                 <div class="card-mid">
                     <div class="main-temp">
                         <span class="current-temperature"></span>
-                        <img src="" alt="" class="temp-icon"/>
+                        <img src="" alt="" class="temp-icon" />
                     </div>
                     <div class="min-max">
                         <span class="min-temperature">12</span>
@@ -53,12 +54,35 @@
 
             </div>
         </section>
+        <!-- current weather end -->
 
-        <!-- <div class="card-flip">
-            <span class="select-current">Current</span>
+        <!--  forecast weather container-->
+        <section class="forecast-container hidden">
+            <div class="search-location">
+                <input type="text" placeholder="What city?" class="search-input" id="forecast-search-input" value="">
+                <button class="search-button" id="forecast-search-button"> Search </button>
+            </div>
+
+            <div class="forecast-card">
+                <div class="forecast-card-top">
+                    <h2 class="forecast-city-name"></h2>
+                    <span class="forecast-current-temperature"></span>
+                    <img src="" alt="" class="forecast-temp-icon" />
+                </div>
+                
+                <div class="forecast-card-mid">
+                    <!-- inserted via JS -->
+                </div>
+            </div>
+
+        </section>
+        <!-- forecast end -->
+
+        <div class="card-flip">
+            <button class="select-current">Today</button>
             <span class="v-divider">|</span>
-            <span class="select-forecast">Forecast</a>
-        </div> -->
+            <button class="select-forecast">Forecast</button>
+        </div>
 
     </div>
 
