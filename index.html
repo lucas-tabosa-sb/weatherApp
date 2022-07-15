@@ -18,7 +18,7 @@
         <h1 class="app-title">WeatherApp</h1>
 
         <!-- current weather container -->
-        <section class="weather-container hidden">
+        <section class="weather-container">
             <div class="search-location">
                 <input type="text" placeholder="What city?" class="search-input" id="search-input" value="">
                 <button class="search-button" id="search-button"> Search </button>
@@ -57,10 +57,10 @@
         <!-- current weather end -->
 
         <!--  forecast weather container-->
-        <section class="forecast-container">
+        <section class="forecast-container hidden">
             <div class="search-location">
-                <input type="text" placeholder="What city?" class="search-input" id="search-input" value="">
-                <button class="search-button" id="search-button"> Search </button>
+                <input type="text" placeholder="What city?" class="search-input" id="forecast-search-input" value="">
+                <button class="search-button" id="forecast-search-button"> Search </button>
             </div>
 
             <div class="forecast-card">
@@ -79,9 +79,9 @@
         <!-- forecast end -->
 
         <div class="card-flip">
-            <span class="select-current">Current</span>
+            <button class="select-current">Today</button>
             <span class="v-divider">|</span>
-            <span class="select-forecast">Forecast</a>
+            <button class="select-forecast">Forecast</button>
         </div>
 
     </div>

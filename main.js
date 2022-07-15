@@ -18,6 +18,8 @@ const forecastCity = document.querySelector('.forecast-city-name')
 const forecastCurrentTemp = document.querySelector('.forecast-current-temperature')
 const forecastTempIcon = document.querySelector('.forecast-temp-icon')
 const forecastCardMid = document.querySelector('.forecast-card-mid')
+const forecastSearchInput = document.getElementById("forecast-search-input");
+const forecastSearchBtn = document.getElementById("forecast-search-button");
 
 // card + select card / hide the other
 const currentCard = document.querySelector(".weather-container");
@@ -80,7 +82,7 @@ const getCurrent = async function getWeather() {
 };
 
 const getForecast = async function getForecastReq(){
-  const cityOption = `${searchInput.value ? searchInput.value : "fortaleza"}`;
+  const cityOption = `${forecastSearchInput.value ? forecastSearchInput.value : "fortaleza"}`;
 
   const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityOption}&appid=${apiKey}&units=metric`
   const response = await fetch(forecastUrl)
@@ -89,7 +91,7 @@ const getForecast = async function getForecastReq(){
 
   // whole list of 40 items
   let forecastList = forecast.list
-  
+
   // maps the 40 items -> returns an array of 40 full dates
   let forecastDates = forecastList.map(items => {
     let s = items.dt
@@ -109,63 +111,62 @@ const getForecast = async function getForecastReq(){
     return Math.floor(items.main.temp)
   })
 
-  // logging the desired days of week 5 days from the current date + respective weather icons
-  //console.log(forecastDates[4]) -> first day of forecast
-  //console.log(forecastIcons[4]) -> 1 day icon
-  // console.log(forecastTemp[4])
+  /*
+    logging the desired days of week 5 days from the current date + respective weather icons
+    console.log(forecastDates[4]) -> first day of forecast
+    console.log(forecastIcons[4]) -> 1 day icon
+    console.log(forecastTemp[4])
 
-  // gets 5 days, weather icons, temperatures, from the current date, at noon
-  const daysOfWeek = [forecastDates[4], forecastDates[12], forecastDates[20], forecastDates[28], forecastDates[36]]
-  const tempsOfWeek = [forecastTemp[4], forecastTemp[12], forecastTemp[20], forecastTemp[28], forecastTemp[36]]
-  const weekDaysIcons = [forecastIcons[4], forecastIcons[12], forecastIcons[20], forecastIcons[28], forecastIcons[36]]
-
-  const weekdaysMarkup = `
-  <div class="weekday-container">
-    <p class="weekday">${forecastDates[4]}</p>
-    <span class="date">dummy</span>
-    <span class="forecast-weather">23</span>
-    <img src="http://openweathermap.org/img/wn/${forecastIcons[0]}@2x.png" alt="" class="forecast-temp-icon" />
-  </div>`
-
-  forecastCardMid.innerHTML += weekdaysMarkup
-
-  console.log(daysOfWeek)
-  console.log(weekDaysIcons)
-  console.log(tempsOfWeek)
+    TODO REFACTOR MARKUP
+    gets 5 days, weather icons, temperatures, from the current date, at noon
+    const daysOfWeek = [forecastDates[4], forecastDates[12], forecastDates[20], forecastDates[28], forecastDates[36]]
+    const tempsOfWeek = [forecastTemp[4], forecastTemp[12], forecastTemp[20], forecastTemp[28], forecastTemp[36]]
+    const weekDaysIcons = [forecastIcons[4], forecastIcons[12], forecastIcons[20], forecastIcons[28], forecastIcons[36]]
+  */
 
 
-
-  // populating HTML:
+// populating HTML:
   forecastCity.textContent = `${cityOption}, `
   forecastCurrentTemp.textContent = currentTemp.textContent
   forecastTempIcon.src = tempIcon.src
 
-  
 
+  const markup = `
+  <div class="weekday-container">
+    <p class="weekday">${forecastDates[4]}:</p>
+    <span class="forecast-weather">${forecastTemp[4]}℃</span>
+    <img src="http://openweathermap.org/img/wn/${forecastIcons[0]}@2x.png" alt="" class="forecast-temp-icon" />
+  </div>
+  <div class="weekday-container">
+    <p class="weekday">${forecastDates[12]}:</p>
+    <span class="forecast-weather">${forecastTemp[12]}℃</span>
+    <img src="http://openweathermap.org/img/wn/${forecastIcons[0]}@2x.png" alt="" class="forecast-temp-icon" />
+  </div>
+  <div class="weekday-container">
+    <p class="weekday">${forecastDates[20]}:</p>
+    <span class="forecast-weather">${forecastTemp[20]}℃</span>
+    <img src="http://openweathermap.org/img/wn/${forecastIcons[0]}@2x.png" alt="" class="forecast-temp-icon" />
+  </div>
+  <div class="weekday-container">
+    <p class="weekday">${forecastDates[28]}:</p>
+    <span class="forecast-weather">${forecastTemp[28]}℃</span>
+    <img src="http://openweathermap.org/img/wn/${forecastIcons[0]}@2x.png" alt="" class="forecast-temp-icon" />
+  </div>
+  <div class="weekday-container">
+    <p class="weekday">${forecastDates[36]}:</p>
+    <span class="forecast-weather">${forecastTemp[36]}℃</span>
+    <img src="http://openweathermap.org/img/wn/${forecastIcons[0]}@2x.png" alt="" class="forecast-temp-icon" />
+  </div>
+  `
 
+  forecastCardMid.innerHTML += markup
+  selectForecast.disabled = true
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  // END OF GET FORECAST
 }
 
 
-// event handlers
+//    EVENT HANDLERS
 
 // TODO -> FINISH CURRENT AND FORECAST CARDS
 selectForecast.addEventListener('click', function(){
@@ -176,9 +177,21 @@ selectForecast.addEventListener('click', function(){
 selectCurrent.addEventListener('click', function(){
     currentCard.classList.remove('hidden')
     forecastCard.classList.add('hidden')
+    selectForecast.disabled = false
+    forecastCardMid.innerHTML= ''
 })
 
 selectForecast.addEventListener('click', getForecast)
+
+// search button on forecast page
+// forecastSearchBtn.addEventListener('click', getForecast)
+forecastSearchBtn.addEventListener('click', function(){
+  forecastCardMid.innerHTML= ''
+  getForecast()
+})
+// forecastSearchInput.addEventListener
+
+
 
 
 // when page loads
@@ -192,5 +205,12 @@ searchInput.addEventListener("keyup", function (e) {
   if (e.keyCode === 13) {
     e.preventDefault();
     searchBtn.click();
+  }
+});
+
+forecastSearchInput.addEventListener("keyup", function (e) {
+  if (e.keyCode === 13) {
+    e.preventDefault();
+    forecastSearchBtn.click();
   }
 });
