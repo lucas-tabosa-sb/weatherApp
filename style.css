@@ -200,11 +200,31 @@ input {
     color: #fff;
     padding: 1rem;
     text-shadow: 1px 1px 1px rgba(0,0,0,1);
+    border-radius: 1.6rem;
 }
 
-.hidden {
-    display: none;
+.weather-container{
+    z-index: 2;
+    backface-visibility: hidden;
 }
+.forecast-container {
+    z-index: 1;
+    transform: rotateY(180deg);
+}
+
+.card {
+    transition: all 1s linear;
+    transform-style: preserve-3d;
+    position: relative;
+}
+
+.app:hover .card {
+    transform: rotateY(180deg);
+}
+
+/* .hidden {
+    display: none;
+} */
 
 
 
